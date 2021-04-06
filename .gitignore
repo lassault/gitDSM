@@ -1,1 +1,27 @@
 /react
+
+/ej*/src/config/*
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/ej*/node_modules
+/ej*/.pnp
+/ej*/.pnp.js
+
+# testing
+/ej*/coverage
+
+# production
+/ej*/build
+
+# misc
+/ej*/.DS_Store
+/ej*/.env.local
+/ej*/.env.development.local
+/ej*/.env.test.local
+/ej*/.env.production.local
+
+/ej*/npm-debug.log*
+/ej*/yarn-debug.log*
+/ej*/yarn-error.log*
