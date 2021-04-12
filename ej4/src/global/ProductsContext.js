@@ -18,6 +18,7 @@ export class ProductsContextProvider extends React.Component {
                     prevProducts.push({
                         ProductId: change.doc.id,
                         ProductName: change.doc.data().ProductName,
+                        ProductDescription: change.doc.data().ProductDescription,
                         ProductPrice: change.doc.data().ProductPrice,
                         ProductImage: change.doc.data().ProductImage,
                     })

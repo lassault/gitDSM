@@ -1,0 +1,99 @@
+.receipts-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.receipts-container .receipt-card {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+@media(max-width: 768px) {
+    .receipts-container .receipt-card {
+        flex-direction: column;
+        justify-content: center;
+        border-bottom: 1px solid #e4e4e4;
+    }
+}
+
+.receipts-container .receipt-card .receipt-img {
+    width: 150px;
+    height: 120px;
+}
+
+@media(max-width: 768px) {
+    .receipts-container .receipt-card .receipt-img {
+        width: 90%;
+        height: auto;
+    }
+}
+
+.receipts-container .receipt-card .receipt-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.receipts-container .receipt-card .receipt-name {
+    width: 150px;
+    margin-left: 20px;
+}
+
+@media(max-width: 768px) {
+    .receipts-container .receipt-card .receipt-name {
+        width: 90%;
+        margin-left: 0px;
+        text-align: center;
+        margin-top: 4px;
+    }
+}
+
+.receipts-container .receipt-card .receipt-address {
+    width: 150px;
+    margin-left: 20px;
+}
+
+@media(max-width: 768px) {
+    .receipts-container .receipt-card .receipt-address {
+        width: 90%;
+        margin-left: 0px;
+        text-align: center;
+        margin-top: 4px;
+    }
+}
+
+.receipts-container .receipt-card .receipt-price {
+    width: 150px;
+    margin-left: 20px;
+    color: #f57224;
+}
+
+@media(max-width: 768px) {
+    .receipts-container .receipt-card .receipt-price {
+        width: 90%;
+        margin-left: 0px;
+        text-align: center;
+        margin-top: 4px;
+    }
+}
+
+.delete-btn {
+    background-color: transparent;
+    border: hidden;
+    outline: none;
+    cursor: pointer;
+    color: red;
+}
+
+.red {
+    background-color: rgb(255, 51, 0)
+}

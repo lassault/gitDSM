@@ -30,7 +30,7 @@
     color: #000;
 }
 
-.navbox .rightside .no-of-products {
+.no-of-products {
     background-color: #f57224;
     color: #fff;
     font-size: 10px;
@@ -39,10 +39,6 @@
     width: 14px;
     height: 14px;
     border-radius: 3px;
-    position: absolute;
-    top: 10px;
-    left: 75px;
-    display: flex;
     justify-content: center;
     align-items: center;
 }

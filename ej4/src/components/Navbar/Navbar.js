@@ -5,7 +5,7 @@ import { cart } from 'react-icons-kit/entypo/cart';
 import { auth } from '../../config/Config';
 import { CartContext } from '../../global/CartContext';
 
-import logo from '../../images/logo.png';
+import logo from '../../images/ema.png';
 import './Navbar.css';
 
 export const Navbar = ({ user }) => {
@@ -34,8 +34,12 @@ export const Navbar = ({ user }) => {
             { user && 
                 <div className='rightside'>
                     <span><Link to='/' className='navlink'>{user}</Link></span>
-                    <span><Link to='cartproducts' className='navlink'><Icon icon={cart}></Icon></Link></span>
-                    <span className='no-of-products'>{totalQty}</span>
+                    <span>
+                        <Link to='cartproducts' className='navlink'>
+                            <Icon icon={cart}></Icon>
+                            <span className='no-of-products'>{totalQty}</span>
+                        </Link>
+                    </span>
                     <span><button className='logout-btn' onClick={logout}>LOGOUT</button></span>
                 </div>
             }

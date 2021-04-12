@@ -5,6 +5,9 @@ import { Navbar } from '../Navbar/Navbar';
 import { useHistory } from 'react-router-dom';
 
 import './Cashout.css';
+import { toast } from 'react-toastify';
+
+toast.configure();
 
 export const Cashout = (props) => {
 
@@ -14,10 +17,10 @@ export const Cashout = (props) => {
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [country, setCountry] = useState('');
     const [mobilePhone, setMobilePhone] = useState('');
     const [address, setAddress] = useState('');
     const [error, setError] = useState('');
-    const [successMsg, setSuccessMsg] = useState('');
 
     useEffect(() => {
         auth.onAuthStateChanged(user => {
@@ -25,6 +28,7 @@ export const Cashout = (props) => {
                 db.collection('SignedUsers').doc(user.uid).onSnapshot(snapshot => {
                     setName(snapshot.data().Name);
                     setEmail(snapshot.data().Email);
+                    setCountry(snapshot.data().Country);
                 })
             } else {
                 history.push('/login')
@@ -37,11 +41,13 @@ export const Cashout = (props) => {
         auth.onAuthStateChanged(user => {
             if (user) {
                 console.log(shoppingCart);
+                console.log(user)
                 const date = new Date();
                 const time = date.getTime();
                 db.collection('Receipts').doc(user.uid + '_' + time).set({
                     UserId: user.uid,
                     Name: name,
+                    Country: country,
                     Email: email,
                     MobilePhone: mobilePhone,
                     Address: address,
@@ -51,7 +57,16 @@ export const Cashout = (props) => {
                     setMobilePhone('');
                     setAddress('');
                     dispatch({ type: 'EMPTY' });
-                    setSuccessMsg('Your order has been placed successfully. Thanks for visiting us. You will be redirected to home page after 5 seconds.');
+                    toast.info('Your order has been placed successfully. Thanks for visiting us. You will be redirected to home page after 5 seconds.', {
+                        position: 'top-right',
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: false,
+                        draggable: false,
+                        progress: undefined,
+                        className: 'green'
+                    });
                     setTimeout(() => {
                         history.push('/');
                     }, 5000)
@@ -67,9 +82,6 @@ export const Cashout = (props) => {
                 <br/>
                 <h2>Cashout Details</h2>
                 <br/>
-                { successMsg && 
-                    <div className='success-msg'>{ successMsg }</div>
-                }
                 <form autoComplete='off' className='form-group' onSubmit={cashoutSubmit}>
                     <label htmlFor='name'>Name</label>
                     <input type='text' className='form-control' required
@@ -87,7 +99,7 @@ export const Cashout = (props) => {
                     <input type='text' className='form-control' required
                         onChange={(e) => setAddress(e.target.value)} value={address} />
                     <br/>
-                    <label htmlFor='price'>Prive to pay</label>
+                    <label htmlFor='price'>Price to pay</label>
                     <input type='number' className='form-control' required
                         value={totalPrice} disabled />
                     <br/>

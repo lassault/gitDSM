@@ -4,6 +4,7 @@ import { db, storage } from '../../config/Config';
 export const AddProducts = () => {
 
     const [productName, setProductName] = useState('');
+    const [productDescription, setProductDescription] = useState('');
     const [productPrice, setProductPrice] = useState(0);
     const [productImage, setProductImage] = useState(null);
     const [error, setError] = useState('');
@@ -36,10 +37,12 @@ export const AddProducts = () => {
             storage.ref('product-images').child(productImage.name).getDownloadURL().then(url => {
                 db.collection('Products').add({
                     ProductName: productName,
+                    ProductDescription: productDescription,
                     ProductPrice: Number(productPrice),
                     ProductImage: url
                 }).then(() => {
                     setProductName('');
+                    setProductDescription('');
                     setProductPrice(0);
                     setProductImage('');
                     setError('');
@@ -60,15 +63,19 @@ export const AddProducts = () => {
                 <input type='text' className='form-control' required 
                     onChange={(e)=>setProductName(e.target.value)} value={productName}/>
                 <br/>
-                <label htmlFor='product-price'>Product Price</label>
+                <label htmlFor='product-price'>Product Description</label>
                 <br/>
+                <input type='text' className='form-control' required
+                    onChange={(e) => setProductDescription(e.target.value)} value={productDescription}/>
+                <br />
+                <label htmlFor='product-price'>Product Price</label>
+                <br />
                 <input type='number' className='form-control' required 
                     onChange={(e)=>setProductPrice(e.target.value)} value={productPrice}/>
                 <br/>
                 <label htmlFor='product-img'>Product Image</label>
                 <br/>
                 <input type='file' className='form-control' onChange={productImageHandler} id='file' />
-                { /*<input type='file' onChange={productImgHandler} /> */}
                 <br/>
                 <button className='btn btn-success btn-md mybtn'>ADD</button>
             </form>
