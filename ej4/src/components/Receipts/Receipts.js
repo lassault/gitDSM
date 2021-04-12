@@ -6,7 +6,6 @@ import { Receipt } from '../Receipt/Receipt';
 import { ReceiptsContext } from '../../global/ReceiptsContext';
 
 import './Receipts.css';
-import '../Popup/Popup.css';
 
 export const Receipts = ({ user }) => {
 
@@ -27,7 +26,7 @@ export const Receipts = ({ user }) => {
                 <div className='receipts-container'>
                     {receipts.length === 0 && <div>No receipts to display</div>}
                     {receipts.map(receipt => (
-                        <Receipt receipt={receipt} remove={() => togglePopup(receipt)}></Receipt>
+                        <Receipt key={receipt.Id} receipt={receipt} remove={() => togglePopup(receipt)}></Receipt>
                     ))}
                     {isOpen && <Popup receipt={receipt} handleClose={togglePopup}></Popup>}
                 </div>
@@ -38,8 +37,7 @@ export const Receipts = ({ user }) => {
             <div>
                 <h1>Pedidos</h1>
                 <div className='receipts-container'>
-                    <p>No receipts to display</p>
-                    <p>You must be logged in.</p>
+                    <p>Debes iniciar sesión para poder ver los pedidos.</p>
                 </div>
             </div>
         )

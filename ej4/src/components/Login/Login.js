@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
 import { auth } from '../../config/Config';
-import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export const Login = (props) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
 
     const login = (e) => {
         e.preventDefault();
         auth.signInWithEmailAndPassword(email, password).then(() => {
             setEmail('');
             setPassword('');
-            setError('');
             props.history.push('/');
-        }).catch(error => setError(error.message))
+        }).catch(error => toast.error(error.message))
     }
 
     return (
@@ -34,11 +32,6 @@ export const Login = (props) => {
                 <br/>
                 <button type='submit' className='btn btn-success btn-md mybtn'>LOGIN</button>
             </form>
-            { error && <span className='error-msg'>{error}</span> }
-            <br/>
-            <span>Don't have an account? Register
-                <Link to='signup'> Here</Link>
-            </span>
         </div>
     )
 }

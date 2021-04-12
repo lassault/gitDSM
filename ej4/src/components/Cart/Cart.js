@@ -1,11 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Icon } from 'react-icons-kit';
-import { ic_add } from 'react-icons-kit/md/ic_add';
-import { ic_remove } from 'react-icons-kit/md/ic_remove';
-import { iosTrashOutline } from 'react-icons-kit/ionicons/iosTrashOutline';
-
 import { Navbar } from '../Navbar/Navbar';
+import { Item } from '../Item/Item';
 import { CartContext } from '../../global/CartContext';
 
 import './Cart.css';
@@ -14,65 +10,40 @@ export const Cart = ({ user }) => {
 
     const { shoppingCart, dispatch, totalPrice, totalQty } = useContext(CartContext);
     
-    return(
+    return (
         <div>
             <Navbar user={user}></Navbar>
             <div>
-                { shoppingCart.length !== 0 &&
-                    <h1>Cart</h1>
-                }
+                {shoppingCart.length !== 0 && <h1>Carrito</h1>}
                 <div className='cart-container'>
-                    { shoppingCart.length === 0 &&
+                    {shoppingCart.length === 0 && 
                         <div>
-                            <span>No items in your cart</span>
-                            <br/>
-                            <span><Link to='/'>Return to Home Page</Link></span>
+                            <span>No hay ningún producto en el carrito.</span>
+                            <br />
+                            <span>Vuelve a la <Link to='/'>página inicial.</Link></span>
                         </div>
                     }
-                    { shoppingCart && shoppingCart.map(cart => (
-                        <div className='cart-card' key={cart.ProductId}>
-
-                            <div className='cart-img'>
-                                <img src={cart.ProductImage} alt='Not found'></img>
-                            </div>
-
-                            <div className='cart-name'>{cart.ProductName}</div>
-                            <div className='cart-price-original'>{cart.ProductPrice}.00 €</div>
-
-                            <div className='inc' onClick={() => dispatch({ type: 'INC', id: cart.ProductId, cart })}>
-                                <Icon icon={ic_add} size={24} />
-                            </div>
-
-                            <div className='quantity'>{cart.qty}</div>
-
-                            <div className='dec' onClick={() => dispatch({ type: 'DEC', id: cart.ProductId, cart })}>
-                                <Icon icon={ic_remove} size={24} />
-                            </div>
-
-                            <div className='cart-price'>
-                                {cart.TotalProductPrice}.00 €
-                            </div>
-
-                            <button className='delete-btn' onClick={() => dispatch({ type: 'DELETE', id: cart.ProductId, cart })}>
-                                <Icon icon={iosTrashOutline} size={24} />
-                            </button>
-                        </div>
+                    {shoppingCart.map(cart => (
+                        <Item key={cart.Id} item={cart}
+                            minus={() => dispatch({ type: 'DEC', id: cart.Id, cart})}
+                            plus={() => dispatch({ type: 'INC', id: cart.Id, cart})}
+                            remove={() => dispatch({ type: 'DELETE', id: cart.Id, cart })}></Item>
                     ))}
-                    { shoppingCart.length > 0 && 
+                    {shoppingCart.length > 0 &&
                         <div className='cart-summary'>
                             <div className='cart-summary-heading'>
-                                Cart-Summary
+                                Resumen
                             </div>
                             <div className='cart-summary-price'>
-                                <span>Total Price</span>
+                                <span>Precio total</span>
                                 <span>{totalPrice}.00 €</span>
                             </div>
                             <div className='cart-summary-price'>
-                                <span>Total Qty</span>
+                                <span>Unidades totales</span>
                                 <span>{totalQty}</span>
                             </div>
                             <Link to='cashout' className='cashout-link'>
-                                <button className='btn btn-success btn-md' style={{ marginTop: 5 + 'px' }}>Cash on delivery</button>
+                                <button className='btn btn-success btn-md' style={{ marginTop: 5 + 'px' }}>Pago en metalico</button>
                             </Link>
                         </div>
                     }

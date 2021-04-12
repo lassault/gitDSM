@@ -16,7 +16,7 @@ export const Navbar = ({ user }) => {
 
     const logout = () => {
         auth.signOut().then(() => {
-            history.push('/login');
+            history.push('/');
         })
     }
 

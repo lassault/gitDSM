@@ -5,8 +5,6 @@ import { db } from '../config/Config';
 
 import '../components/Receipts/Receipts.css';
 
-toast.configure();
-
 export const ReceiptsContext = createContext();
 
 export class ReceiptsContextProvider extends React.Component {
@@ -34,16 +32,7 @@ export class ReceiptsContextProvider extends React.Component {
                     })
                 } else if (change.type === 'removed') {
                     prevReceipts.splice(change.oldIndex, 1);
-                    toast.info('This receipt has been removed.', {
-                        position: 'top-right',
-                        autoClose: 2000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: false,
-                        draggable: false,
-                        progress: undefined,
-                        className: 'red'
-                    });
+                    toast.warn('Este pedido ha sido eliminado.');
                 }
                 this.setState({
                     receipts: prevReceipts

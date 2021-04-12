@@ -10,12 +10,6 @@
     overflow-y: auto;
 }
 
-.error-msg {
-    color: red;
-    font-size: 12px;
-    font-weight: 600;
-}
-
 @media(max-width: 768px) {
     .mybtn {
         width: 100%;

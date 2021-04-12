@@ -2,7 +2,6 @@ import React, { createContext } from 'react';
 import { db } from '../config/Config';
 
 export const ProductsContext = createContext();
-
 export class ProductsContextProvider extends React.Component {
 
     state = {
