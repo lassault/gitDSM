@@ -1,0 +1,84 @@
+.receipt {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+@media(max-width: 768px) {
+    .receipt {
+        flex-direction: column;
+        justify-content: center;
+        border-bottom: 1px solid #e4e4e4;
+    }
+}
+
+.receipt .receipt-img {
+    width: 150px;
+    height: 120px;
+}
+
+@media(max-width: 768px) {
+    .receipt .receipt-img {
+        width: 90%;
+        height: auto;
+    }
+}
+.receipt .receipt-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.receipt .receipt-name {
+    width: 150px;
+    margin-left: 20px;
+}
+
+@media(max-width: 768px) {
+    .receipt .receipt-name {
+        width: 90%;
+        margin-top: 4px;
+        margin-left: 0px;
+        text-align: center;
+    }
+}
+
+.receipt .receipt-address {
+    width: 150px;
+    margin-left: 20px;
+}
+
+@media(max-width: 768px) {
+    .receipt .receipt-address {
+        width: 90%;
+        margin-top: 4px;
+        margin-left: 0px;
+        text-align: center;
+    }
+}
+
+.receipt .receipt-price {
+    width: 150px;
+    margin-left: 20px;
+    color: #f57224;
+}
+
+@media(max-width: 768px) {
+    .receipt .receipt-price {
+        width: 90%;
+        margin-top: 4px;
+        margin-left: 0px;
+        text-align: center;
+    }
+}
+
+.receipt .receipt-remove {
+    background-color: transparent;
+    border: hidden;
+    outline: none;
+    cursor: pointer;
+    color: red;
+}

@@ -16,11 +16,11 @@ export class ProductsContextProvider extends React.Component {
             changes.forEach(change => {
                 if (change.type === 'added') {
                     prevProducts.push({
-                        ProductId: change.doc.id,
-                        ProductName: change.doc.data().ProductName,
-                        ProductDescription: change.doc.data().ProductDescription,
-                        ProductPrice: change.doc.data().ProductPrice,
-                        ProductImage: change.doc.data().ProductImage,
+                        Id: change.doc.id,
+                        Name: change.doc.data().ProductName,
+                        Description: change.doc.data().ProductDescription,
+                        Price: change.doc.data().ProductPrice,
+                        Image: change.doc.data().ProductImage,
                     })
                 }
                 this.setState({

@@ -1,8 +1,7 @@
-import { useContext, useState } from "react"
-import Icon from "react-icons-kit";
-import { iosTrashOutline } from "react-icons-kit/ionicons/iosTrashOutline";
+import { useContext, useState } from 'react';
 
 import { Popup } from '../Popup/Popup';
+import { Receipt } from '../Receipt/Receipt';
 
 import { ReceiptsContext } from '../../global/ReceiptsContext';
 
@@ -26,27 +25,11 @@ export const Receipts = ({ user }) => {
             <div>
                 <h1>Pedidos</h1>
                 <div className='receipts-container'>
-                    { receipts.length === 0 && <div>No receipts to display</div> }
-                    { receipts.map(receipt => (
-                        <div className='receipt-card' key={receipt.ReceiptId}>
-                            <div className='receipt-img'>
-                                <img src={receipt.ReceiptCountry} alt='Not found'></img>
-                            </div>
-                            <div className='receipt-name'>{receipt.ReceiptName}</div>
-                            <div className='receipt-address'>{receipt.ReceiptAddress}</div>
-                            <div className='receipt-price'>{receipt.ReceiptTotalPrice}.00 €</div>
-                            <div className='quantity'>{receipt.ReceiptTotalItems} vacunas</div>
-                            <button className='delete-btn' onClick={() => togglePopup(receipt)}>
-                                <Icon icon={iosTrashOutline} size={24} />
-                            </button>
-                        </div>
+                    {receipts.length === 0 && <div>No receipts to display</div>}
+                    {receipts.map(receipt => (
+                        <Receipt receipt={receipt} remove={() => togglePopup(receipt)}></Receipt>
                     ))}
-                    { isOpen && 
-                        <Popup
-                            receipt={receipt}
-                            handleClose={togglePopup}
-                        />
-                    }
+                    {isOpen && <Popup receipt={receipt} handleClose={togglePopup}></Popup>}
                 </div>
             </div>
         )

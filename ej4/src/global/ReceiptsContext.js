@@ -22,15 +22,15 @@ export class ReceiptsContextProvider extends React.Component {
             changes.forEach(change => {
                 if (change.type === 'added') {
                     prevReceipts.push({
-                        ReceiptId: change.doc.id,
-                        ReceiptName: change.doc.data().Name,
-                        ReceiptCountry: change.doc.data().Country,
-                        ReceiptEmail: change.doc.data().Email,
-                        ReceiptAddress: change.doc.data().Address,
-                        ReceiptMobilePhone: change.doc.data().MobilePhone,
-                        ReceiptTotalItems: change.doc.data().TotalItems,
-                        ReceiptTotalPrice: change.doc.data().TotalPrice,
-                        ReceiptUserId: change.doc.data().UserId
+                        Id: change.doc.id,
+                        Name: change.doc.data().Name,
+                        Country: change.doc.data().Country,
+                        Email: change.doc.data().Email,
+                        Address: change.doc.data().Address,
+                        MobilePhone: change.doc.data().MobilePhone,
+                        TotalItems: change.doc.data().TotalItems,
+                        TotalPrice: change.doc.data().TotalPrice,
+                        UserId: change.doc.data().UserId
                     })
                 } else if (change.type === 'removed') {
                     prevReceipts.splice(change.oldIndex, 1);

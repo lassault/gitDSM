@@ -1,0 +1,77 @@
+.flippy-container {
+    width: 300px;
+    height: auto;
+    margin: 20px;
+    border-radius: 25px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.flippy-front {
+    width: 100%;
+    height: 200px;
+    border-radius: 25px;
+    box-shadow: 5px 5px 4px 4px #e4e4e4;
+}
+
+.flippy-front img {
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+}
+
+.flippy-back {
+    width: 100%;
+    height: 200px;
+    border-radius: 25px;
+    box-shadow: 5px 5px 4px 4px #e4e4e4;
+}
+
+.flippy-back .product-name {
+    width: 100%;
+    font-size: 20px;
+    display: block;
+    color: #f57224;
+    margin-top: 4px;
+}
+
+.flippy-back .product-description {
+    width: 100%;
+    height: 100px;
+    margin-top: 4px;
+}
+
+.flippy-back .product-price {
+    width: 100%;
+    background-color: #f57224;
+    color: #fff;
+    border: hidden;
+    cursor: pointer;
+    padding: 10px 14px;
+    outline: none;
+    border-radius: 0px 0px 25px 25px;
+}
+
+.flippy-back .product-price span {
+    margin: 10px;
+}
+
+.flippy-back .product-price .minus {
+    background-color: rgb(255, 51, 0);
+    border-radius: 25px;
+    border: solid whitesmoke 0.5px;
+    margin-right: 25%;
+}
+
+.flippy-back .product-price .plus {
+    background-color: rgb(98, 212, 4);
+    border-radius: 25px;
+    border: solid whitesmoke 0.5px;
+    margin-left: 25%;
+}
