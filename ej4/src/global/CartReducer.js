@@ -1,6 +1,7 @@
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import '../components/Products/Products.css';
+
+toast.configure();
 
 export const CartReducer = (state, action) => {
 
@@ -15,16 +16,16 @@ export const CartReducer = (state, action) => {
         case 'INC_PRODUCT':
             const check = shoppingCart.find(product => product.Id === action.id);
             if (check) {
-            product = action.product;
-            product.qty = ++product.qty;
-            product.TotalProductPrice = product.qty * product.Price;
-            updatedQty = totalQty + 1;
-            updatedPrice = totalPrice + product.Price;
-            index = shoppingCart.findIndex(cart => cart.Id === action.id);
-            shoppingCart[index] = product;
-            return {
-                shoppingCart: [...shoppingCart], totalPrice: updatedPrice, totalQty: updatedQty
-            }
+                product = action.product;
+                product.qty = ++product.qty;
+                product.TotalProductPrice = product.qty * product.Price;
+                updatedQty = totalQty + 1;
+                updatedPrice = totalPrice + product.Price;
+                index = shoppingCart.findIndex(cart => cart.Id === action.id);
+                shoppingCart[index] = product;
+                return {
+                    shoppingCart: [...shoppingCart], totalPrice: updatedPrice, totalQty: updatedQty
+                }
             } else {
                 toast.success('This product has been added to your cart.');
                 product = action.product;

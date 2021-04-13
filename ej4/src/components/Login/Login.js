@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { auth } from '../../config/Config';
 import { toast } from 'react-toastify';
 
+toast.configure();
+
 export const Login = (props) => {
 
     const [email, setEmail] = useState('');

@@ -7,6 +7,8 @@ import { toast } from 'react-toastify';
 
 import './Cashout.css';
 
+toast.configure();
+
 export const Cashout = (props) => {
 
     const history = useHistory();
@@ -23,7 +25,7 @@ export const Cashout = (props) => {
     useEffect(() => {
         auth.onAuthStateChanged(user => {
             if (user) {
-                db.collection('SignedUsers').doc(user.uid).onSnapshot(snapshot => {
+                db.collection('Users').doc(user.uid).onSnapshot(snapshot => {
                     setName(snapshot.data().Name);
                     setEmail(snapshot.data().Email);
                     setCountry(snapshot.data().Country);

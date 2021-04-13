@@ -19,7 +19,7 @@ export class App extends Component {
   componentDidMount() {
     auth.onAuthStateChanged(user => {
       if (user) {
-        db.collection('SignedUsers').doc(user.uid).get().then(snapshot => {
+        db.collection('Users').doc(user.uid).get('Name').then(snapshot => {
           this.setState({
             user: snapshot.data().Name
           })

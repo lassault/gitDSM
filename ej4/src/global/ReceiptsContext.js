@@ -5,6 +5,8 @@ import { db } from '../config/Config';
 
 import '../components/Receipts/Receipts.css';
 
+toast.configure();
+
 export const ReceiptsContext = createContext();
 
 export class ReceiptsContextProvider extends React.Component {
