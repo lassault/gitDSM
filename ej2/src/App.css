@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+}
+
+.Input {
+  margin: 10px;
+}
+
+.Boton {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.Resultado {
+  font-weight: bold;
+}
